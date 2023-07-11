@@ -19,7 +19,7 @@ interface ILabelInput extends InputProps {
 }
 const LabelInput = forwardRef<any, ILabelInput>(
   ({ control, name, label, type, ...field }, ref) => {
-    const { isValid, errors } = useFormState({ control, name })
+    const { errors } = useFormState({ control, name })
     const isError = Boolean(errors[name])
     const errorMessage = useMemo(() => {
       const fieldError = errors[name]
@@ -31,6 +31,7 @@ const LabelInput = forwardRef<any, ILabelInput>(
     }, [errors, name]);
     return (
       <TextField
+        required
         label={label}
         variant="standard"
         type={type}

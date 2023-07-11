@@ -24,9 +24,8 @@ export const authProvider: AuthProvider = {
     );
   },
   register: (newUser: { email: string, username: string, password: string}) => {
-    const { username, password } = newUser;
     const user = data.users.find(
-      (u) => u.username === username && u.password === password
+      ({ username }) => username === newUser.username
     );
 
     if (user) {
